@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import L from "leaflet";
+import L from 'leaflet';
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css"
