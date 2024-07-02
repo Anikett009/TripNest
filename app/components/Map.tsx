@@ -1,4 +1,5 @@
 "use client";
+
 import { FC } from "react";
 import L from 'leaflet';
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
@@ -17,7 +18,7 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapProps {
-  center?: [number, number];
+  center?: number[]
 }
 
 const Map: FC<MapProps> = ({ center }) => {
