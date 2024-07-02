@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import L, { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
@@ -23,7 +23,7 @@ interface MapProps {
 const Map: FC<MapProps> = ({ center }) => {
   return (
     <MapContainer
-      center={(center as LatLngExpression) || [51, -0.9]}
+      center={(center as L.LatLngExpression) || [51, -0.9]}
       zoom={center ? 4 : 2}
       scrollWheelZoom={false}
       className="h-[35vh] rounded-lg"
@@ -31,7 +31,7 @@ const Map: FC<MapProps> = ({ center }) => {
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {center && <Marker position={center as LatLngExpression} />}
+      {center && <Marker position={center as L.LatLngExpression} />}
     </MapContainer>
   );
 }
