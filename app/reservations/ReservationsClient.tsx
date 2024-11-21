@@ -1,40 +1,38 @@
-"use client"
-import { FC } from "react"
-import { toast } from "react-hot-toast"
-import axios from "axios"
-import { useCallback, useState } from "react"
-import { useRouter } from "next/navigation"
+'use client'
 
-import { SafeReservation, SafeUser } from "../types"
+import { toast } from 'react-hot-toast'
+import axios from 'axios'
+import { useCallback, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
-import Heading from "@/app/components/Heading"
-import Container from "@/app/components/Container"
-import ListingCard from "@/app/components/listings/ListingCard"
+import { SafeReservation, SafeUser } from '../types'
+
+import Heading from '../components/Heading'
+import Container from '../components/Container'
+import ListingCard from '../components/listings/ListingCard'
+import { set } from 'date-fns'
 
 interface ReservationsClientProps {
   reservations: SafeReservation[]
   currentUser?: SafeUser | null
 }
 
-const ReservationsClient: FC<ReservationsClientProps> = ({
-  reservations,
-  currentUser,
-}) => {
+const ReservationsClient: React.FC<ReservationsClientProps> = ({ reservations, currentUser }) => {
   const router = useRouter()
-
-  const [deletingId, setDeletingId] = useState("")
+  const [deletingId, setDeletingId] = useState('')
 
   const onCancel = useCallback(
     (id: string) => {
       setDeletingId(id)
+
       axios
-        .delete(`/api/reservations/$${id}`)
+        .delete(`/api/reservations/${id}`)
         .then(() => {
-          toast.success("Reservations cancelled")
+          toast.success('Reservation cancelled')
           router.refresh()
         })
-        .catch((error) => {
-          toast.error("Something went wrong")
+        .catch(() => {
+          toast.error('Something went wrong')
         })
         .finally(() => {
           setDeletingId('')
@@ -42,12 +40,14 @@ const ReservationsClient: FC<ReservationsClientProps> = ({
     },
     [router]
   )
+
   return (
     <Container>
-      <Heading title="Reservations" subtitle="Bookings on your properties" />
-      <div
-        className="grid grid-cols-1 gap-8 mt-10  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
-      >
+      <Heading
+        title="Reservations"
+        subtitle="Bookings on your properties"
+      />
+      <div className="grid grid-cols-1 gap-8 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {reservations.map((reservation) => (
           <ListingCard
             key={reservation.id}
