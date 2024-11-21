@@ -31,7 +31,7 @@ const TripsClient: FC<TripsClientProps> = ({ reservations, currentUser }) => {
           toast.error(error?.response?.data?.error)
         })
         .finally(() => {
-          setDeletingId("")
+          setDeletingId('')
         })
     },
     [router]
@@ -43,17 +43,7 @@ const TripsClient: FC<TripsClientProps> = ({ reservations, currentUser }) => {
         subtitle="Where you've been and where you're going"
       />
       <div
-        className="
-        mt-10
-        grid
-        grid-cols-1
-        sm:grid-cols-2
-        md:grid-cols-3
-        lg:grid-cols-4
-        xl:grid-cols-5
-        2xl:grid-cols-6
-        gap-8
-      "
+        className="grid grid-cols-1 gap-8 mt-10  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
       >
         {reservations.map((reservation) => (
           <ListingCard
