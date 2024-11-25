@@ -53,7 +53,7 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+      <Heading title="Welcome to Tripnest" subtitle="Create an account!" />
       <Input
         type="email"
         id="email"
@@ -85,9 +85,7 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
 
   const footerContent = (
     <div
-      className="
-      flex flex-col gap-4 mt-3
-    "
+      className="flex flex-col gap-4 mt-3 "
     >
       <hr />
       <Button
@@ -102,12 +100,12 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
-        <div className="justify-center flex flex-row items-center gap-2">
+      <div className="mt-4 font-light text-center text-neutral-500">
+        <div className="flex flex-row items-center justify-center gap-2">
           <div>Already have an account?</div>
           <div
             onClick={toggle}
-            className="text-neutral-800 cursor-pointer hover:underline"
+            className="cursor-pointer text-neutral-800 hover:underline"
           >
             Log in
           </div>
